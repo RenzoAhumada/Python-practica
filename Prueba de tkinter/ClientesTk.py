@@ -1,18 +1,11 @@
 import tkinter as tk
-from tkinter import font
-import tkinter.ttk as ttk
+from tkinter import *
 
-root = tk.Tk()
-root.config(width=800, height=600)
+raiz = tk.Tk()
+raiz.title("Primera Ventana")
+raiz.geometry("520x480")
+raiz.mainloop()
 
-stile=ttk.Style()
-stile.configure("W.Tbutton", font =
-                ('calibri', 10, 'bold','underline'),
-                foreground = 'red')
-
-label = tk.Label(text="Nombre del cliente", font = ("arial",10,"bold"))
-nombre= tk.Entry(text="Nombre")
-label.place(x=50,y=100)
 
 
 
