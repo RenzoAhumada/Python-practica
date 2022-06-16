@@ -1,3 +1,6 @@
+
+import matplotlib.pyplot as plt
+from matplotlib import markers
 import pandas as pd
 import numpy as np
 #Mediante pandas traemos la url del titanic para poder trabajar sobre la misma
@@ -21,9 +24,15 @@ print("Separador--------------")
 #Con la siguiente funcion lo que logramos es poder traer de la columna de Pclass y poder graficarlos.
 print("Primera clase",np.array(sum(df.Pclass==1)),"Segunda clase",np.array(sum(df.Pclass==2)),"Tercera clase",np.array(sum(df.Pclass==3)))
 
-print(df.pivot(index=['Pclass']))
-
-print('''
-dasdasdasdajn
-fsajdasd
-sajfdnjasdfasf''')
+#Desde aqui llamamos plt para poder graficarlo, en este caso utilizare el grafico de diagrama de sectores
+fig, ax = plt.subplots()
+tipo_de_clase = ["Primera Clase", "Segunda Clase", "Tercera clase"]
+#Aqui llamare algunas variables para poder averiguar la cantidad que tiene en la fila llamando la fila de clase y poniendola en su respectiva variable
+primeraClase = len(df.Pclass==1)
+segundaClase = len(df.Pclass==2)
+tercerClase = len(df.Pclass==3)
+#LLamamos una lista la cual almacenara todas las clases para despues colocarlas en el diagrama
+clase = [primeraClase, segundaClase, tercerClase]
+#Desde aqui llamaremos al diagrama con un pequeño label
+plt.pie(clase, labels=tipo_de_clase)
+plt.show
