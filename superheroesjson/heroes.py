@@ -1,10 +1,12 @@
+
+#Importamos json
 import json
 
-
+#Creamos una nueva lista vacia para poder appendiar los datos
 heroes = {}
-
+#Le damos la llave hereos a la lista de hereos para poder appendiar los difrentes tipos de hereos
 heroes["hereos"] = []
-
+#Se appendean los datos
 heroes["hereos"].append({"nombre": "Flash",
                         "identidadSecreta": "Bartholomew Henry 'Barry' Allen",
                         "poderes": [
@@ -28,5 +30,5 @@ heroes["hereos"].append({ "nombre": "Super Man",
                         "durabilidad", 
                         "sentidos y longevidad"
                         ]})
-
+#Imprimimos por pantalla la lista que tiene el json guardad.
 print(heroes)
