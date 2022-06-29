@@ -1,7 +1,10 @@
 
+from importlib.metadata import entry_points
 import json
-import tkinter as tk
-from tkinter import ttk
+from sqlite3 import Row
+from tabnanny import check
+from tkinter import *
+import json
 from tkinter.filedialog import asksaveasfile
 
 '''class  alumnos:
@@ -41,17 +44,28 @@ def buscaropcion():
 
     _alumno = {'matricula': _matricula, "datos": {'nombre': _nombre, 'apellido': _apellido}}
     alumno.setAlumno(_alumno)'''
+window = Tk()
+window.geometry('640x300')
+window.title('Alumnos')
 
+matricula = Label(window, text='Matricula: ')
+Matricula = Entry(window)
+nombre = Label(window, text='Nombre')
+Nombre = Entry(window)
+apellido = Label(window, text='Apellido')
+Apellido = Entry(window)
+submit = Button(window, text='Enviar', command = check).grid(row=3, column=1)
 
-def writeTOJSONFile(path, filematricula, data):
-    json.dump(data, path)
+test = 1
+def writeToJSONFile(path, fileName, data):
+        json.dump(data, path)
 
 path= './'
 
-def cargar():
-    a = caja_matricula.get()
-    b = caja_nombre.get()
-    c = caja_apellido.get()
+def check():
+    a = Matricula.get()
+    b = Nombre.get()
+    c = Apellido.get()
     print(a)
     print(b) 
     print(c)   
@@ -60,36 +74,21 @@ def cargar():
     data['Nombre'] = b
     data['Apellido'] = c
     files = [('JSON File', '*.json')]
+    fileName = 'Alumnos'
     filepos = asksaveasfile(filetypes = files,defaultextension = json,initialfile='Alumnos')
-    (filepos, fileMatricula, data)
-    writeToJSONFile(filepos, fileMatricula, data)
+    writeToJSONFile(filepos, fileName, data)
 
 
 
+matricula.grid(row=0, column=0)
+nombre.grid(row=1, column=0)
+apellido.grid(row=2, column=0)
+Matricula.grid(row=0, column=1)
+Nombre.grid(row=1, column=1)
+Apellido.grid(row=2, column=1)
 
-ventana = tk.Tk()
-ventana.config(width=600, height=400)
 
-etiqueta_matricula = ttk.Label(text="Ingrese numero de matricula del alumno: ")
-etiqueta_matricula.place(x=20, y=20)
-etiqueta_nombre = ttk.Label(text="Ingrese nombre del alumno: ")
-etiqueta_nombre.place(x=20, y=40)
-etiqueta_apellido = ttk.Label(text="Ingrese apellido del alumno: ")
-etiqueta_apellido.place(x=20, y=60)
-
-caja_matricula = ttk.Entry()
-caja_matricula.place(x=250, y=20, width=80)
-caja_nombre = ttk.Entry()
-caja_nombre.place(x=250, y=40, width=80)
-caja_apellido = ttk.Entry()
-caja_apellido.place(x=250, y=60, width=80)
-
-boton_enviar_opcion = ttk.Button(text="Agregar alumno", command= cargar)
-boton_enviar_opcion.place(x=20, y=80)
-etiqueta_alumnos = ttk.Label(text="Los alumnos son: ")
-etiqueta_alumnos.place(x=20, y= 200)
-
-ventana.mainloop()
+mainloop()
 
 
 
